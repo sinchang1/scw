@@ -1,0 +1,56 @@
+<head>
+  <title>myWallet</title>
+</head>
+
+<body>
+  <h1>Welcome to My Wallet</h1>
+  {{>header}}
+  {{#if currentUser}} 
+        {{> leaderboard }}
+  {{/if}}
+</body>
+
+<template name="header">
+  <nav class="navbar navbar-default" role="navigation">  <!--네비게이션 바 연결(헤더)-->
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="">Microscope</a>  <!--타이틀-->
+      </div>
+      <div class="collapse navbar-collapse" id="navigation">
+        <ul class="nav navbar-nav navbar-right">
+          {{> loginButtons}}              <!--전체 이벤트를 로그인 버튼즈로 묶었음-->
+        </ul>
+      </div>
+    </div>
+  </nav>
+</template>
+
+<template name="leaderboard"> 
+  <ul>
+    <li class="player ">ID: {{firstName}}</li>  <!--로그인 하면 아이디를 보여줌-->
+    <li>Friends: </li>
+    <li>
+    {{#each friends}}
+    <div class="friend">
+    <span>{{name}}</span> [ <button name="send"> Send your Friends bitcoin</button>]
+      <p></p>
+      
+      <div class="clearfix"></div>
+    </div>
+    {{/each}}
+    </li>
+      <!--<button class="increment">Give 5 Points</button> -->
+      <div class="row" align="center">
+        <p align="center" id="qrcode">
+            <div class="clearfix"></div>
+            <button name="sendbitcoin"> Send your Friends bitcoin</button>
+        </p>
+      </div>
+  </ul>
+</template>
